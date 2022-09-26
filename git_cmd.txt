@@ -1,0 +1,4 @@
+- git add fileName
+- git commit -m "messege"
+- git push origin #######اسم الملف الي يعطيهولك
+- git pull origin 
