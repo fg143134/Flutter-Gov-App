@@ -361,7 +361,7 @@ class Step {
 
   factory Step.fromJson(Map<String, dynamic> json) => Step(
         id: json["id"],
-        description: json["description"] == null ? null : json["description"],
+        description: json["description"] == null ? "" : json["description"],
       );
 
   Map<String, dynamic> toJson() => {
