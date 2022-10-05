@@ -87,14 +87,14 @@ class Eservice {
         updatedAt: DateTime.parse(json["updated_at"]),
         period:
             json["period"] == null ? null : periodValues.map[json["period"]],
-        pricing: json["pricing"] == null ? null : json["pricing"],
+        pricing: json["pricing"] == null ? "" : json["pricing"],
         alternatives:
-            json["alternatives"] == null ? null : json["alternatives"],
-        link: json["link"] == null ? null : json["link"],
+            json["alternatives"] == null ? "" : json["alternatives"],
+        link: json["link"] == null ? "" : json["link"],
         fullDescription:
-            json["fullDescription"] == null ? null : json["fullDescription"],
+            json["fullDescription"] == null ? "" : json["fullDescription"],
         shortDescription:
-            json["shortDescription"] == null ? null : json["shortDescription"],
+            json["shortDescription"] == null ? "" : json["shortDescription"],
         videoUrl: json["videoUrl"],
         steps: List<Step>.from(json["steps"].map((x) => Step.fromJson(x))),
         icon: Icon.fromJson(json["icon"]),
@@ -168,8 +168,8 @@ class Icon {
         name: json["name"],
         alternativeText: json["alternativeText"],
         caption: json["caption"],
-        width: json["width"] == null ? null : json["width"],
-        height: json["height"] == null ? null : json["height"],
+        width: json["width"] == null ? 0 : json["width"],
+        height: json["height"] == null ? 0 : json["height"],
         formats: json["formats"] == null
             ? null
             : Formats.fromJson((json["formats"])),
@@ -310,7 +310,7 @@ class Step {
 
   factory Step.fromJson(Map<String, dynamic> json) => Step(
         id: json["id"],
-        description: json["description"] == null ? null : json["description"],
+        description: json["description"] == null ? "" : json["description"],
       );
 
   Map<String, dynamic> toJson() => {

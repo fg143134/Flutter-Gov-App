@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:es_eidc_app/productmodule/controllers/eservices_controller.dart';
 import 'package:es_eidc_app/commonmodule/Appstring.dart';
 import 'package:es_eidc_app/productmodule/views/search_bar.dart';
-import 'package:es_eidc_app/productmodule/views/eService_cards';
+import 'package:es_eidc_app/productmodule/views/eService_cards.dart';
 
 
 class EservicesListView extends StatelessWidget {

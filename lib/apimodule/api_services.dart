@@ -20,7 +20,7 @@ class apiService {
 
   //--------
   static Future<List<Target>> getTarget() async {
-    Uri url = Uri.parse(main_api + '/target');
+    Uri url = Uri.parse(main_api + '/targets');
     var response = await client.get(url);
     if (response.statusCode == 200) {
       var JsonString = response.body;

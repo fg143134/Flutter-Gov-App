@@ -38,7 +38,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               children: <Widget>[
                
                 
-                Image.network("https://es.eidc.gov.ly/logo.png", height: size.height * 0.25 - 120, width: size.width,),
+                Image.asset("assets/images/logo.png", height: size.height * 0.25 - 120, width: size.width,),
                 Padding(padding: EdgeInsets.only(bottom: 10)),
 
                  Text(
@@ -77,7 +77,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                     child: TextField(
                       onChanged: (value) {},
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: "بحث",
                         hintStyle: TextStyle(
                           color: CPrimaryColor.withOpacity(0.5),
                         ),
