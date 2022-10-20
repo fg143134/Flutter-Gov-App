@@ -8,43 +8,35 @@ class TargetListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Hellooo"),
+    return SingleChildScrollView(
+      child: Container(
+        height: Get.height,
+        width: Get.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Obx(() {
+                if (targetController.isLoading.value)
+                  return Center(child: CircularProgressIndicator());
+                else {
+                  print(targetController.targetList.length);
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: targetController.targetList.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(targetController.targetList[index].name),
+                      );
+                    },
+                  );
+                }
+              }),
+            ),
+          ],
+        ),
       ),
-      body: Obx(() {
-        if (targetController.isLoading.value)
-          return Center(child: CircularProgressIndicator());
-        else {
-          print(targetController.targetList.length);
-          return ListView.builder(
-              itemCount: targetController.targetList.length,
-              itemBuilder: (context, index) {
-                print(targetController.targetList.length);
-
-                return Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                            width: Get.width,
-                            height: Get.height,
-                            child: Image.network(
-                              main_api +
-                                  targetController.targetList[index].icon.url,
-                              width: Get.width,
-                              height: Get.height,
-                              fit: BoxFit.fill,
-                              color: Colors.blueAccent,
-                              colorBlendMode: BlendMode.color,
-                            ))
-                      ],
-                    )
-                  ],
-                );
-              });
-        }
-      }),
     );
   }
 }

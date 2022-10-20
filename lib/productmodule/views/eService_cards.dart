@@ -8,20 +8,40 @@ class EserviceCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        child: SizedBox(
-          width: 300,
-          height: 100,
-          child: Center(child: Text('Elevated Card')),
+    return SingleChildScrollView(
+      child: Container(
+        height: Get.height,
+        width: Get.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Obx(() {
+                if (EserviceController.isLoading.value)
+                  return Center(child: CircularProgressIndicator());
+                else {
+                  print(EserviceController.eserviceList.length);
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: EserviceController.eserviceList.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                          child: Image.network(
+                        main_api +
+                            EserviceController.eserviceList[index].icon.url,
+                      ));
+                    },
+                  );
+                }
+              }),
+            ),
+          ],
         ),
       ),
     );
-    
-    
-    
-    
-     /*Scaffold(
+
+    /*Scaffold(
       
       body: Obx(() {
         if (EserviceController.isLoading.value)

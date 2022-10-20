@@ -7,42 +7,24 @@ import 'package:es_eidc_app/commonmodule/Appstring.dart';
 import 'package:es_eidc_app/productmodule/views/search_bar.dart';
 import 'package:es_eidc_app/productmodule/views/eService_cards.dart';
 
+import 'target_view.dart';
 
 class EservicesListView extends StatelessWidget {
   final eServiceController EserviceController = Get.put(eServiceController());
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
-      body: 
-         SingleChildScrollView(
-          child:Column(
-            
-            children:  <Widget>[
+        appBar: AppBar(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
               HeaderWithSearchBox(size: size),
-              EserviceCards()
-
-
-              
+              TargetListView(),
+              EserviceCards(),
             ],
           ),
-
-        )
-
-
-
-       
-      
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-     
-      
-    );
+        ));
   }
 }
