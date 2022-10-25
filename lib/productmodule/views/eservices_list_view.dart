@@ -15,15 +15,18 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-        child: Column(
-      children: <Widget>[
-        HeaderWithSearchBox(size: size),
-        TargetListView(
-          size: size,
-        ),
-        EserviceCards(),
-      ],
-    ));
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: SingleChildScrollView(
+          child: Column(
+        children: <Widget>[
+          HeaderWithSearchBox(size: size),
+          TargetListView(
+            size: size,
+          ),
+          EserviceCards(),
+        ],
+      )),
+    );
   }
 }

@@ -20,7 +20,7 @@ class TargetListView extends StatelessWidget {
     return Container(
       height: size.height * 0.1,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 10),
