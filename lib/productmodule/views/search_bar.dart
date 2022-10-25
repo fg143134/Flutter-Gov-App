@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:es_eidc_app/commonmodule/AppColor.dart';
 
-
 class HeaderWithSearchBox extends StatelessWidget {
   const HeaderWithSearchBox({
     Key? key,
@@ -14,7 +13,7 @@ class HeaderWithSearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
+      margin: EdgeInsets.only(bottom: kDefaultPadding * 0.5),
       // It will cover 20% of our total height
       height: size.height * 0.25,
       child: Stack(
@@ -23,7 +22,7 @@ class HeaderWithSearchBox extends StatelessWidget {
             padding: EdgeInsets.only(
               left: kDefaultPadding,
               right: kDefaultPadding,
-              bottom: 36 + kDefaultPadding,
+              //bottom: 36 + kDefaultPadding,
             ),
             height: size.height * 0.25 - 27,
             decoration: BoxDecoration(
@@ -33,21 +32,21 @@ class HeaderWithSearchBox extends StatelessWidget {
                 bottomRight: Radius.circular(36),
               ),
             ),
-            child:  Column(
-              
+            child: Column(
               children: <Widget>[
-               
-                
-                Image.asset("assets/images/logo.png", height: size.height * 0.25 - 120, width: size.width,),
+                Image.asset(
+                  "assets/images/logo.png",
+                  height: size.height * 0.25 - 120,
+                  width: size.width,
+                ),
                 Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                 Text(
+                Text(
                   'منصة الخدمات الالكترونية',
                   style: Theme.of(context).textTheme.headline5?.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.bold , fontFamily: 'Almarai'),
-
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Almarai'),
                 ),
-
               ],
             ),
           ),
@@ -99,5 +98,3 @@ class HeaderWithSearchBox extends StatelessWidget {
     );
   }
 }
-
-
