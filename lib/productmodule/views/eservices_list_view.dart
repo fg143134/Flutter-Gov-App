@@ -9,22 +9,21 @@ import 'package:es_eidc_app/productmodule/views/eService_cards.dart';
 
 import 'target_view.dart';
 
-class EservicesListView extends StatelessWidget {
+class Body extends StatelessWidget {
   final eServiceController EserviceController = Get.put(eServiceController());
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-        appBar: AppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              HeaderWithSearchBox(size: size),
-              TargetListView(),
-              EserviceCards(),
-            ],
-          ),
-        ));
+    return SingleChildScrollView(
+        child: Column(
+      children: <Widget>[
+        HeaderWithSearchBox(size: size),
+        TargetListView(
+          size: size,
+        ),
+        EserviceCards(),
+      ],
+    ));
   }
 }

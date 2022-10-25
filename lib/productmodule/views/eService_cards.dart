@@ -1,3 +1,4 @@
+import 'package:es_eidc_app/productmodule/views/target_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:es_eidc_app/productmodule/controllers/eservices_controller.dart';
@@ -8,38 +9,24 @@ class EserviceCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: Get.height,
-        width: Get.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Obx(() {
-                if (EserviceController.isLoading.value)
-                  return Center(child: CircularProgressIndicator());
-                else {
-                  print(EserviceController.eserviceList.length);
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: EserviceController.eserviceList.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                          child: Image.network(
-                        main_api +
-                            EserviceController.eserviceList[index].icon.url,
-                      ));
-                    },
-                  );
-                }
-              }),
-            ),
-          ],
-        ),
-      ),
-    );
+    return Obx(() {
+      if (EserviceController.isLoading.value)
+        return Center(child: CircularProgressIndicator());
+      else {
+        print(EserviceController.eserviceList.length);
+        return ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: EserviceController.eserviceList.length,
+          itemBuilder: (context, index) {
+            return Container(
+                child: Image.network(
+              main_api + EserviceController.eserviceList[index].icon.url,
+            ));
+          },
+        );
+      }
+    });
 
     /*Scaffold(
       
