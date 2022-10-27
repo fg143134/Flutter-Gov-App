@@ -5,16 +5,15 @@ import 'package:es_eidc_app/productmodule/controllers/eservices_controller.dart'
 import 'package:es_eidc_app/commonmodule/Appstring.dart';
 
 class EserviceCards extends StatelessWidget {
-  final eServiceController EserviceController = Get.put(eServiceController());
+  eServiceController EserviceController;
 
+  EserviceCards(this.EserviceController, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Obx(() {
       return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          // crossAxisSpacing: 15,
-          // mainAxisSpacing: 15,
         ),
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,

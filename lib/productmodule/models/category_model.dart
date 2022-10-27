@@ -125,8 +125,8 @@ class Icon {
     required this.name,
     required this.alternativeText,
     required this.caption,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     this.formats,
     required this.hash,
     this.ext,
@@ -144,8 +144,8 @@ class Icon {
   String name;
   String alternativeText;
   String caption;
-  int width;
-  int height;
+  int? width;
+  int? height;
   Formats? formats;
   String hash;
   Ext? ext;
@@ -207,20 +207,20 @@ final extValues = EnumValues({".pdf": Ext.PDF, ".png": Ext.PNG});
 class Formats {
   Formats({
     required this.thumbnail,
-    required this.small,
+    this.small,
   });
 
   Thumbnail thumbnail;
-  Thumbnail small;
+  Thumbnail? small;
 
   factory Formats.fromJson(Map<String, dynamic> json) => Formats(
         thumbnail: Thumbnail.fromJson(json["thumbnail"]),
-        small: Thumbnail.fromJson(json["small"]),
+        small: json["small"] != null ? Thumbnail.fromJson(json["small"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
         "thumbnail": thumbnail.toJson(),
-        "small": small == null ? null : small.toJson(),
+        "small": small?.toJson(),
       };
 }
 
@@ -292,7 +292,7 @@ class Step {
 
   factory Step.fromJson(Map<String, dynamic> json) => Step(
         id: json["id"],
-        description: json["description"] == null ? null : json["description"],
+        description: json["description"] == null ? "" : json["description"],
       );
 
   Map<String, dynamic> toJson() => {

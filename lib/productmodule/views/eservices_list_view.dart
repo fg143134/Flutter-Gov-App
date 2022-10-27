@@ -7,10 +7,13 @@ import 'package:es_eidc_app/commonmodule/Appstring.dart';
 import 'package:es_eidc_app/productmodule/views/search_bar.dart';
 import 'package:es_eidc_app/productmodule/views/eService_cards.dart';
 
+import '../../widgets.dart/category_chip.dart';
+import 'category_view.dart';
 import 'target_view.dart';
 
 class Body extends StatelessWidget {
-  final eServiceController EserviceController = Get.put(eServiceController());
+  final eServiceController EserviceController =
+      Get.put(eServiceController(0, 0));
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +24,9 @@ class Body extends StatelessWidget {
           child: Column(
         children: <Widget>[
           HeaderWithSearchBox(size: size),
-          TargetListView(
-            size: size,
-          ),
-          EserviceCards(),
+          TargetListView(),
+          CategoryListView(),
+          EserviceCards(EserviceController),
         ],
       )),
     );
