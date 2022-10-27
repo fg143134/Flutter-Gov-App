@@ -33,19 +33,23 @@ class HeaderWithSearchBox extends StatelessWidget {
               ),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Image.asset(
                   "assets/images/logo.png",
                   height: size.height * 0.25 - 120,
                   width: size.width,
                 ),
-                Padding(padding: EdgeInsets.only(bottom: 10)),
-                Text(
-                  'منصة الخدمات الالكترونية',
-                  style: Theme.of(context).textTheme.headline5?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Almarai'),
+                // Padding(padding: EdgeInsets.only(bottom: 10)),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    'منصة الخدمات الالكترونية',
+                    style: Theme.of(context).textTheme.headline5?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Almarai'),
+                  ),
                 ),
               ],
             ),

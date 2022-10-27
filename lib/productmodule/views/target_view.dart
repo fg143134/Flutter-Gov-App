@@ -9,18 +9,16 @@ import '../../widgets.dart/target_chip.dart';
 class TargetListView extends StatelessWidget {
   TargetListView({
     Key? key,
-    required this.size,
   }) : super(key: key);
 
-  final Size size;
   final TargetController targetController = Get.put(TargetController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.1,
+      height: Get.height * 0.1,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 20, top: 10),
