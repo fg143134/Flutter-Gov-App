@@ -18,7 +18,6 @@ class Welcome {
     required this.updatedAt,
     required this.eservices,
   });
-
   int? id;
   String? name;
   DateTime createdAt;
