@@ -5,6 +5,8 @@ import 'package:es_eidc_app/apimodule/api_services.dart';
 class TargetController extends GetxController {
   var isLoading = true.obs;
   var targetList = List<Target>.empty().obs;
+   int selcindexTarget = -1.obs();
+
 
   @override
   void onInit() {

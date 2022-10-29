@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 
 import '../commonmodule/AppColor.dart';
 import '../productmodule/controllers/eservices_controller.dart';
@@ -9,9 +10,10 @@ class MyTargetChip extends StatelessWidget {
   MyTargetChip({
     Key? key,
   }) : super(key: key);
+  
 
   final TargetController targetController = Get.put(TargetController());
-
+  int selectedChip = 0.obs();
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -38,13 +40,22 @@ class MyTargetChip extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: kDefaultPadding / 1.5),
               child: InkWell(
-                onTap: () => Get.find<eServiceController>().Geteservices(
-                    idtarget: targetController.targetList[index - 1].id),
+                onTap: () {
+Get.find<eServiceController>().Geteservices(
+                    idtarget: targetController.targetList[index - 1].id);
+                     targetController.selcindexTarget  = index -1;
+                   
+                } ,
                 child: Chip(
-                  label: Text(targetController.targetList[index - 1].name),
+                  label: Text(targetController.targetList[index - 1].name,
+                  style: TextStyle(
+              color: index - 1 == targetController.selcindexTarget ? Colors.white : Colors.black
+            ),),
+ backgroundColor:
+                index - 1  == targetController.selcindexTarget ? CPrimaryColor : Colors.grey[300]),
                 ),
-              ),
-            );
+              )
+            ;
           }
         },
       );

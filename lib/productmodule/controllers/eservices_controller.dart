@@ -7,24 +7,32 @@ class eServiceController extends GetxController {
   var eserviceList = List<EServices>.empty().obs;
   int IDCat = 0.obs();
   int IDTar = 0.obs();
+   String Search = "".obs();
+
+
 
   final int? iDcategory;
   final int? IDTarget;
+  final String? search;
 
-  eServiceController(this.iDcategory, this.IDTarget);
+
+  eServiceController(this.iDcategory, this.IDTarget,this.search);
 
   @override
   void onInit() {
-    Geteservices(idcategory: IDCat, idtarget: IDTar);
+    Geteservices(idcategory: IDCat, idtarget: IDTar ,search : Search) ;
     super.onInit();
   }
+ 
 
-  void Geteservices({int? idcategory, int? idtarget}) async {
+  void Geteservices({int? idcategory, int? idtarget, String? search}) async {
     try {
       IDCat = idcategory ?? IDCat;
       IDTar = idtarget ?? IDTar;
+      Search = search ?? Search;
+
       isLoading(true);
-      var eservices = await apiService.getEservices(IDCat, IDTar);
+      var eservices = await apiService.getEservices(IDCat, IDTar,Search);
       if (eservices != null) {
         eserviceList.assignAll(eservices);
       }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:es_eidc_app/commonmodule/AppColor.dart';
+import 'package:get/get.dart';
+
+import '../controllers/eservices_controller.dart';
 
 class HeaderWithSearchBox extends StatelessWidget {
   const HeaderWithSearchBox({
@@ -78,7 +81,13 @@ class HeaderWithSearchBox extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
-                      onChanged: (value) {},
+                      onSubmitted: (value) {
+                        Get.find<eServiceController>().Geteservices(search: value);
+
+                      },
+                      onChanged: (value) {
+
+                      },
                       decoration: InputDecoration(
                         hintText: "بحث",
                         hintStyle: TextStyle(

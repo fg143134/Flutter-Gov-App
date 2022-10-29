@@ -10,23 +10,28 @@ class apiService {
   static var client = http.Client();
 
   static Future<List<EServices>> getEservices(
-      int idcategory, int idtarget) async {
+      int idcategory, int idtarget,String search) async {
     Uri url;
+    String IsSearch = "";
 
+    if(search != ""){
+IsSearch = "&name_contains=" + search;
+    }
     if (idcategory == 0 && idtarget == 0) {
-      url = Uri.parse(main_api + '/eservices');
+      url = Uri.parse(main_api + '/eservices' + "?name_contains=" + search);
     } else if (idcategory != 0 && idtarget == 0) {
       url = Uri.parse(
-          main_api + '/eservices?categories_in=' + idcategory.toString());
+          main_api + '/eservices?categories_in=' + idcategory.toString() + IsSearch);
     } else if (idcategory == 0 && idtarget != 0) {
       url =
-          Uri.parse(main_api + '/eservices?targets_in=' + idtarget.toString());
+          Uri.parse(main_api + '/eservices?targets_in=' + idtarget.toString() + IsSearch);
     } else {
       url = Uri.parse(main_api +
           '/eservices?targets_in=' +
           idtarget.toString() +
           '&categories_in=' +
-          idcategory.toString());
+          idcategory.toString()
+          + IsSearch);
     }
     var response = await client.get(url);
     if (response.statusCode == 200) {

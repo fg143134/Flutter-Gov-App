@@ -11,15 +11,34 @@ class EserviceCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return GridView.builder(
+          if(EserviceController.eserviceList.isEmpty) {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 50,
+                  width: 50,
+                 
+                ),
+                Text(
+                  "لايوجد نتائج لهذا البحث",
+                  style: Theme.of(context).textTheme.titleLarge,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            );
+          }else{
+  return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ),
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        itemCount: EserviceController.eserviceList.length,
+        itemCount: EserviceController.eserviceList.length ,
         itemBuilder: (context, index) {
-          return Padding(
+   
+          return
+ Padding(
             padding: const EdgeInsets.all(12.0),
             child: Container(
                 decoration: BoxDecoration(
@@ -53,8 +72,12 @@ class EserviceCards extends StatelessWidget {
                   ],
                 )),
           );
-        },
+
+          }
+        
       );
+          }
+    
     });
 
     /*Scaffold(
